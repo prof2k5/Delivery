@@ -50,27 +50,28 @@ let details = document.getElementById("details")
 
 button.addEventListener("click", () => {
 
-    let baseCost = 100;
+    let baseCost = 490;
     let overweight = 0;
-    let Express;
-    let destinationCost;
+    let Express = 0;
+    let destinationCost = 0;
 
     const destinationZone = destinationZone_input.value;
     const weight = weight_input.value;
     const isExpressDelivery = ExpressDelivery_input.checked;
-    
 
+    console.log("Base Cost:", baseCost)
 
     if (destinationZone == "Ibadan") {
         destinationCost = baseCost + 5000;
-        console.log("Payment for Ibadan is:", destinationCost);
+        console.log("Payment for Ibadan is:", destinationCost - baseCost);
         // details.innerHTML = `Payment for Ibadan is: ${baseCost}`;
     } else if (destinationZone == "Lagos") {
         destinationCost = baseCost + 1000;
-        console.log("Payment for Lagos is:", baseCost)
+        console.log("Payment for Lagos is:", destinationCost - baseCost)
         // details.innerHTML = `Payment for Lagos is: ${baseCost}`;
     } else if (destinationZone == "Abeokuta") {
         destinationCost = baseCost + 3000;
+        console.log("Payment for Abeokuta is:", destinationCost - baseCost)
     }
     else {
         console.log("There is no fare information for your destination")
@@ -78,6 +79,7 @@ button.addEventListener("click", () => {
     }
 
     if (weight > 5) {
+        // let oversize = true;
         overweight = 1500;
         console.log("Overweight Pay:", overweight)
         // details.innerHTML = `Overweight Pay: ${overweight}`
@@ -96,13 +98,21 @@ button.addEventListener("click", () => {
     } else {
         Express = 0;
     }
-    details.innerHTML = `Payment for ${destinationZone} is: ${destinationCost} (Including BasePay of ${baseCost}) <br>
-    Overweight Pay: ${overweight} <br>
-    Total Payment is: ${totalPay} <br>
-    Express delivery Pay: ${Express} <br>
-    Total final Pay + Express Delivery : ${totalPay + Express}
-    `
+    // details.innerHTML = `Payment for ${destinationZone} is: ${destinationCost} (Including BasePay of ${baseCost}) <br>
+    // ${oversize}? 'Overweight Pay: ${overweight} <br>'
+    // Total Payment is: ${totalPay} <br>
+    // ${isExpressDelivery}? 'Express delivery Pay: ${Express} <br>'
+    // Total final Pay + Express Delivery : ${totalPay + Express}
+    // `
 
+    details.innerHTML =
+        `BasePay: ${baseCost.toFixed(2)} <br>
+    ${destinationZone} Pay: ${(destinationCost - baseCost).toFixed(2)} <br>
+    ${weight > 5 ? `Overweight Pay: ${overweight.toFixed(2)} <br>` : ''}
+    Total Payment is: ${totalPay.toFixed(2)} <br>
+    ${isExpressDelivery ? `Express delivery Pay: ${Express.toFixed(2)} <br> 
+    Total final Pay: ${isExpressDelivery ? (totalPay + Express).toLocaleString(2) : totalPay.toFixed(2)}` : ''}`
+    // Total final Pay: ${isExpressDelivery ? totalPay + Express : totalPay} <br>`
 
 })
 
