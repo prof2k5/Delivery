@@ -1,32 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
 
-    <form action="">
-        <label for="destination">Destination Zones</label>
+    <style>
+        
+        input[type="select"], input[type="checkbox"], input[type="button"], input[type="textbox"] {
+        }
+        div {
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px;
+            clear:none;
+            border-radius: 20px;
+        }
+        .main {
+            width: 50%;
+            margin: 0 auto;
+            background-color: blanchedalmond;
+            background-repeat: no-repeat;
+            
+        }
+        #button {
+            text-align: center;
+            border-radius: 10px;
+            background: green;
+            color: white;
+            width: 15vw;
+            padding: 5px 0;
+        }
+        .heading {
+            color:cadetblue;
+            /* color: black; */
+            color:darkgreen
+
+
+        }
+        .notice {
+            font-size: 12px;
+            /* line-height: 0.2rem; */
+        }
+        .exp {
+            /* line-height: 0.2rem; */
+        }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1 class="heading">Taiwo Logistics Ltd Booking System</h1>
+      <form action="">
+        <div>
+            <label for="destination">Destination</label>
         <select name="destination" id="destinationZone">
-            <option value="" disabled="disabled">Select your destination</option>
-            <option value="Lagos">Lagos</option>
-            <option value="Ibadan">Ibadan</option>
-            <option value="Abeokuta">Abeokuta</option>
+          <option value="" disabled="disabled">Select your destination</option>
+          <option value="Lagos">Lagos</option>
+          <option value="Ibadan">Ibadan</option>
+          <option value="Abeokuta">Abeokuta</option>
         </select>
         <label for="weight">Weight</label>
-        <input type="number" id="weight">
-        <input type="checkbox" id="expressDelivery">
-        <label for="">Do you want Express Delivery ?</label>
-        <input type="button" id="button" value="Calculate fare">
-    </form>
-    <p id="details"></p>
+        <input type="number" id="weight" />
+        </div>
+        <!-- <div>
+            <label for="weight">Weight</label>
+        <input type="number" id="weight" />
+        </div> -->
+        <div>
+            <input type="checkbox" id="expressDelivery" />
+        <label for="" class="exp">Do you want Express Delivery ?</label>
+        <span class="notice">50% surcharge applies</span>
+        </div>
+        <input type="button" id="button" value="Calculate fare" />
+      </form>
 
-    <script type="text/javascript" src="delivery.js"></script>
+      <p id="details"></p>
 
-
-    
-</body>
-
+      <script type="text/javascript" src="delivery.js"></script>
+    </div>
+  </body>
 </html>
